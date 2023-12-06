@@ -1,6 +1,10 @@
 import React from 'react'
+import { useState, useStaten } from 'react'
 
 function Formulario() {
+  const [nombre, setnombre] = useState("");
+  
+
   return (
     <div className='md:w-1/2 lg:2/5'>
         <h2 className='font-black text-3xl text-center'>Seguimientos de pacientes</h2>
@@ -11,7 +15,7 @@ function Formulario() {
           <form className='bg-white shadow-md rounded-lg pv-10 px-5 mb-10'>
             <div className='mb-5'>
               <label htmlFor='mascota' className='block text-grey-700 uppercase font-bold'>Nombre Mascota</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
-              <input id='mascota' type='text' placeholder='Nombre de la mascota'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'/>
+              <input id='mascota' type='text' placeholder='Nombre de la mascota'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'value={nombre} onChange={ (e) => setnombre(e.target.value) }/>
             </div>
             <div className='mb-5'>
               <label htmlFor='propietario' className='block text-grey-700 uppercase font-bold'>Nombre Propietario</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
