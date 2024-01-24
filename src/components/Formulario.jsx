@@ -3,6 +3,26 @@ import { useState, useStaten } from 'react'
 
 function Formulario() {
   const [nombre, setnombre] = useState("");
+  const [propietario, setpropietario] = useState("");
+  const [mail, setmail] = useState("");
+  const [fecha, setfecha] = useState("");
+  const [sintomas, setsintomas] = useState("");
+
+  const [error, setError] = useState(false)
+  
+  const handleSumit = (e) =>{
+    e.preventDefacult();
+
+      //Validacion del formulario
+
+      if({ nombre, propietario, mail, fecha, sintomas}.includes("")){
+        console.log("Hay un campo vacio");
+
+        setError(true)
+      }else{
+        console.log("Todos llenos");
+      }
+}
   
 
   return (
@@ -13,6 +33,7 @@ function Formulario() {
             <span className='text-indigo-600 font-bold'>Administralos</span>
           </p>
           <form className='bg-white shadow-md rounded-lg pv-10 px-5 mb-10'>
+            
             <div className='mb-5'>
               <label htmlFor='mascota' className='block text-grey-700 uppercase font-bold'>Nombre Mascota</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
               <input id='mascota' type='text' placeholder='Nombre de la mascota'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'value={nombre} onChange={ (e) => setnombre(e.target.value) }/>
