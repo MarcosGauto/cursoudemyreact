@@ -19,9 +19,10 @@ function Formulario() {
         console.log("Hay un campo vacio");
 
         setError(true)
-      }else{
-        console.log("Todos llenos");
+        return;
       }
+
+      setError(false)
 }
   
 
@@ -33,7 +34,12 @@ function Formulario() {
             <span className='text-indigo-600 font-bold'>Administralos</span>
           </p>
           <form className='bg-white shadow-md rounded-lg pv-10 px-5 mb-10'>
-            
+
+            { error && (
+              <div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 "  >
+                <p>Todos los campos son obligatorios</p>
+                </div>
+              )}
             <div className='mb-5'>
               <label htmlFor='mascota' className='block text-grey-700 uppercase font-bold'>Nombre Mascota</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
               <input id='mascota' type='text' placeholder='Nombre de la mascota'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'value={nombre} onChange={ (e) => setnombre(e.target.value) }/>
