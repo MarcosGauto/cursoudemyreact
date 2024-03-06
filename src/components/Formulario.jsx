@@ -1,7 +1,7 @@
 import React from 'react'
-import { useState, useStaten } from 'react'
+import { useState } from 'react'
 
-function Formulario() {
+function Formulario( pacientes, setPacientes ) {     {/* EXTRAEMOS A SET PACIENTES */}
   const [nombre, setnombre] = useState("");
   const [propietario, setpropietario] = useState("");
   const [mail, setmail] = useState("");
@@ -23,7 +23,27 @@ function Formulario() {
       }
 
       setError(false)
-}
+
+      //obseto de pacientes
+      const objetoPaciente = {
+        nombre,
+        propietario,
+        mail,
+        fecha,
+        sintomas
+      }
+
+     //console.log(objetoPaciente);
+
+      setPacientes([...pacientes,objetoPaciente ])   //se usa el spread para mutar el arreglo original y devuelve un nuevo arreglo
+
+      //Reinicier el formulario
+      setnombre("")
+      setpropietario("")
+      setmail("")
+      setfecha("")
+      setsintomas("")
+    }
   
 
   return (
@@ -47,10 +67,6 @@ function Formulario() {
             <div className='mb-5'>
               <label htmlFor='propietario' className='block text-grey-700 uppercase font-bold'>Nombre Propietario</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
               <input id='propietario' type='text' placeholder='Nombre Propietario'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'/>
-            </div>
-            <div className='mb-5'>
-              <label htmlFor='mascota' className='block text-grey-700 uppercase font-bold'>Nombre Mascota</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
-              <input id='mascota' type='text' placeholder='Nombre de la mascota'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'/>
             </div>
             <div className='mb-5'>
               <label htmlFor='email' className='block text-grey-700 uppercase font-bold'>Email</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
