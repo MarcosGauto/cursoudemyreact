@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import Error from './Error';
 
 function Formulario( pacientes, setPacientes ) {     {/* EXTRAEMOS A SET PACIENTES */}
   const [nombre, setnombre] = useState("");
@@ -53,13 +54,12 @@ function Formulario( pacientes, setPacientes ) {     {/* EXTRAEMOS A SET PACIENT
             Añade pacientes y {" "}
             <span className='text-indigo-600 font-bold'>Administralos</span>
           </p>
-          <form className='bg-white shadow-md rounded-lg pv-10 px-5 mb-10'>
+          <form 
+              onSubmit={handleSumit}
+              className='bg-white shadow-md rounded-lg pv-10 px-5 mb-10'
+              >
 
-            { error && (
-              <div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 "  >
-                <p>Todos los campos son obligatorios</p>
-                </div>
-              )}
+            { error && <Error><p>Todos los campos son obligatorios</p></Error> }
             <div className='mb-5'>
               <label htmlFor='mascota' className='block text-grey-700 uppercase font-bold'>Nombre Mascota</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
               <input id='mascota' type='text' placeholder='Nombre de la mascota'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'value={nombre} onChange={ (e) => setnombre(e.target.value) }/>
@@ -80,7 +80,7 @@ function Formulario( pacientes, setPacientes ) {     {/* EXTRAEMOS A SET PACIENT
               <label htmlFor='sintomas' className='block text-grey-700 uppercase font-bold'>Describe los sintomas</label> {/**se usa el htmlfpr para cuando haga click en label vaya al id del input */}
               <textarea id='sintomas' type='date' placeholder='Describe los sintomas'className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mb'/>
             </div>
-            <input type='submit' className='bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700' ></input> {/**El value es para dalr nombre al boton */}
+            <input type='submit' value='Agregar Pacientes' className='bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700' ></input> {/**El value es para dar nombre al boton */}
           </form>
       
     </div>
