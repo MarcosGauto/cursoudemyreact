@@ -1,10 +1,11 @@
 
-const Pacientes = () => {
+const Pacientes = (paciente) => {
+        const {nombre} = paciente
     return (
         <div className='m- bg-white shadow-md px-5 py-10 rounded-xl'>
             <p className='font-bold -mb-3 text-gray-700 uppercase'>
                 Mombre: {""}
-                <span className='font-normal normal-case'>Marcos</span>
+                <span className='font-normal normal-case'>{nombre}</span>
             </p>
             <p className=' mt-3 font-bold -mb-3 text-gray-700 uppercase'>
                 Propietario: {""}

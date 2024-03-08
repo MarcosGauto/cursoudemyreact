@@ -16,7 +16,9 @@ function App() {
         pacientes = {pacientes}
         setPacientes = {setPacientes}
         />  {/*props y la funcion siempre llamarla igual para que no haya errores*/}
-      <ListadoPacientes/>
+      <ListadoPacientes
+        pacientes={pacientes} 
+        />
       </div>
     </div>
   )

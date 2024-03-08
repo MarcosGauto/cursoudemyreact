@@ -2,7 +2,9 @@ import Pacientes from "./pacientes"
 
 Pacientes
 
-function ListadoPacientes() {
+function ListadoPacientes({pacientes}) {
+    
+
   return (
     <div className='md:w-1/2 lg-3/5 md:h-screen overflow-y-scroll'>
         <h2 className='font-black text-3xl text-center'>LIstado de Pacientes </h2>
@@ -10,14 +12,16 @@ function ListadoPacientes() {
           Administra tus {""}
           <span className='text-indigo-600 font bold'>Pacientes y citas</span>
         </p>
-        <Pacientes/>
-        <Pacientes/>
-        <Pacientes/>
-        <Pacientes/>
-        <Pacientes/>
-        <Pacientes/>
-        <Pacientes/>
-        <Pacientes/>
+
+        { pacientes.map( ({paciente}) => {
+          return(
+            <Pacientes
+              paciente={paciente}
+            />
+          )
+        } )}
+        
+
     </div>
   )
 }
